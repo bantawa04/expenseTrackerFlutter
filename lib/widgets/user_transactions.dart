@@ -14,6 +14,26 @@ class _UserTransactionState extends State<UserTransaction> {
         id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
     Transaction(
         id: 't2', title: 'New Jacket', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't2', title: 'New Jacket', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't2', title: 'New Jacket', amount: 69.99, date: DateTime.now()),
+            Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't2', title: 'New Jacket', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't2', title: 'New Jacket', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't2', title: 'New Jacket', amount: 69.99, date: DateTime.now()),
   ];
 
   void _addTransaction(String txTitle, double txAmount) {
@@ -31,7 +51,10 @@ class _UserTransactionState extends State<UserTransaction> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: <Widget>[NewTransaction(_addTransaction), TransactionList(_userTransaction)],
+      children: <Widget>[
+        NewTransaction(_addTransaction),
+        TransactionList(_userTransaction),
+      ],
     );
   }
 }
