@@ -10,7 +10,7 @@ class NewTransaction extends StatefulWidget {
 }
 
 class _NewTransactionState extends State<NewTransaction> {
-  final titleController = TextEditingController();
+  final titleController = TextEditingController(); 
   final amountController = TextEditingController();
 
   void submitData() {
@@ -21,6 +21,9 @@ class _NewTransactionState extends State<NewTransaction> {
       return;
     }
     widget.addTransaction(title, amount);
+
+    //close show bottem sheet model
+    Navigator.of(context).pop();
   }
 
   @override
