@@ -13,6 +13,23 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         accentColor: Colors.amber,
+        fontFamily: 'Quicksand', //set default font for the app
+        textTheme: ThemeData.light().textTheme.copyWith( //sets font style to title for other component
+              headline6: TextStyle(
+                fontFamily: 'OpenSans',
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith( //set font size to app bar text
+                headline6: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+        ),
       ),
       home: MyHomePage(),
     );
@@ -26,30 +43,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransaction = [
-    Transaction(
-        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't2', title: 'New Jacket', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't2', title: 'New Jacket', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't2', title: 'New Jacket', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't2', title: 'New Jacket', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't2', title: 'New Jacket', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't2', title: 'New Jacket', amount: 69.99, date: DateTime.now()),
+    // Transaction(
+    //     id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    // Transaction(
+    //     id: 't2', title: 'New Jacket', amount: 69.99, date: DateTime.now()),
   ];
 
   void _addTransaction(String txTitle, double txAmount) {
@@ -103,8 +100,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
+      /**
+       * floating button position
+       */
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat, 
+      /**
+       * Floating action button icon and action method
+       */
+      floatingActionButton: FloatingActionButton( 
         child: Icon(
           Icons.add,
         ),
