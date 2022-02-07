@@ -1,4 +1,5 @@
-import 'package:expense/widgets/transaction_list.dart';
+import './widgets/chat.dart';
+import './widgets/transaction_list.dart';
 import './widgets/new_transaction.dart';
 import './models/transaction.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         accentColor: Colors.amber,
         fontFamily: 'Quicksand', //set default font for the app
-        textTheme: ThemeData.light().textTheme.copyWith( //sets font style to title for other component
+        textTheme: ThemeData.light().textTheme.copyWith(
+              //sets font style to title for other component
               headline6: TextStyle(
                 fontFamily: 'OpenSans',
                 fontSize: 18,
@@ -22,7 +24,8 @@ class MyApp extends StatelessWidget {
               ),
             ),
         appBarTheme: AppBarTheme(
-          textTheme: ThemeData.light().textTheme.copyWith( //set font size to app bar text
+          textTheme: ThemeData.light().textTheme.copyWith(
+                //set font size to app bar text
                 headline6: TextStyle(
                   fontFamily: 'OpenSans',
                   fontSize: 24,
@@ -42,12 +45,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _userTransaction = [
+  final List<Transaction> _userTransactions = [
     // Transaction(
     //     id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
     // Transaction(
     //     id: 't2', title: 'New Jacket', amount: 69.99, date: DateTime.now()),
   ];
+
+  List<Transaction> get _recentTransaction {
+    return _userTransactions.where((tx) {
+      return tx.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
+    }).toList();
+  }
 
   void _addTransaction(String txTitle, double txAmount) {
     final newTx = Transaction(
@@ -57,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
       date: DateTime.now(),
     );
     setState(() {
-      _userTransaction.add(newTx);
+      _userTransactions.add(newTx);
     });
   }
 
@@ -88,26 +101,19 @@ class _MyHomePageState extends State<MyHomePage> {
           // mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Card(
-                color: Colors.blue,
-                child: Text('Chart'),
-                elevation: 5,
-              ),
-            ),
-            TransactionList(_userTransaction),
+            Chart(_recentTransaction),
+            TransactionList(_userTransactions),
           ],
         ),
       ),
       /**
        * floating button position
        */
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat, 
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       /**
        * Floating action button icon and action method
        */
-      floatingActionButton: FloatingActionButton( 
+      floatingActionButton: FloatingActionButton(
         child: Icon(
           Icons.add,
         ),
