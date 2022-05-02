@@ -1,6 +1,6 @@
 {
-    "name": "expense",
-    "short_name": "expense",
+    "name": "my_app",
+    "short_name": "my_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
