@@ -21,6 +21,10 @@ class MyHomePage extends StatelessWidget {
     Transaction(
         id: 2, title: 'Weekly Groceries', amount: 16.53, date: DateTime.now()),
   ];
+
+  final titleController = new TextEditingController();
+  final amountController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,17 +50,22 @@ class MyHomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   TextField(
+                    controller: titleController,
                     decoration: InputDecoration(
                       labelText: 'Title',
                     ),
                   ),
                   TextField(
+                    controller: amountController,
                     decoration: InputDecoration(
                       labelText: 'Amount',
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      print(titleController.text);
+                      print(amountController.text);
+                    },
                     child: Text(
                       'Add Transaction',
                       style: TextStyle(
