@@ -57,10 +57,9 @@ class MyHomePage extends StatelessWidget {
                       child: Text(
                         tx.amount!.toString(),
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.purple,
-                          fontSize: 20
-                        ),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.purple,
+                            fontSize: 20),
                       ),
                     ),
                     Column(
