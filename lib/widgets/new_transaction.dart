@@ -6,7 +6,7 @@ class NewTransaction extends StatelessWidget {
 
   final Function addTransaction;
 
-  NewTransaction(addTransaction);
+  NewTransaction(this.addTransaction);
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +31,10 @@ class NewTransaction extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                print(titleController.text);
-                print(amountController.text);
+                addTransaction(
+                  titleController.text,
+                  double.parse(amountController.text), //typecast
+                );
               },
               child: Text(
                 'Add Transaction',
