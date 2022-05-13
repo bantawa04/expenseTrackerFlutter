@@ -17,9 +17,9 @@ class TransactionList extends StatelessWidget {
               children: <Widget>[
                 Container(
                   margin: EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal:
-                          15), //add spacing to horzontal and vertical sides
+                    vertical: 10,
+                    horizontal: 15,
+                  ),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     border: Border.all(
@@ -28,7 +28,7 @@ class TransactionList extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    '\$${transactions[index].amount}',
+                    '\$${transactions[index].amount!.toStringAsPrecision(2)}',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.purple,
