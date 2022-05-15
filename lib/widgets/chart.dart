@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/chart_bar.dart';
 import '../models/transaction.dart';
 import 'package:intl/intl.dart';
 
@@ -28,14 +29,25 @@ class Chart extends StatelessWidget {
     });
   }
 
+  double get totalSpending {
+    //equivalent to reducer in JS
+    return groupedTransactionValues.fold(0.0, (sum, item) {
+      return sum + (item['amount'] as double);
+    });
+  }
+
   @override
-  Widget build(BuildContext context) {    
+  Widget build(BuildContext context) {
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
       child: Row(
-        children: groupedTransactionValues.map((data){
-          return Text('${data['day']} : ${data['amount'].toString()}');
+        children: groupedTransactionValues.map((data) {
+          return ChartBar(
+            (data['day'] as String),
+            (data['amount'] as double),
+            totalSpending == 0.0 ? 0.0 : (data['amount'] as double) / totalSpending,
+          );
         }).toList(),
       ),
     );
