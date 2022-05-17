@@ -4,16 +4,21 @@ class ChartBar extends StatelessWidget {
   final String label;
   final double spendingAmount;
   final double spendingPercentage;
+  final bool today;
 
-  ChartBar(this.label, this.spendingAmount, this.spendingPercentage);
+  ChartBar(
+      this.label, this.spendingAmount, this.spendingPercentage, this.today);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        FittedBox(
-          //forces its child into the available space
-          child: Text('\$${spendingAmount.toString()}'),
+        Container(
+          height: 20,
+          child: FittedBox(
+            //forces its child into the available space
+            child: Text('\$${spendingAmount.toString()}'),
+          ),
         ),
         SizedBox(
           height: 4,
@@ -45,7 +50,17 @@ class ChartBar extends StatelessWidget {
         SizedBox(
           height: 4,
         ),
-        Text(label),
+        Text(
+          label,
+          style: today
+              ? TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                )
+              : TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+        ),
       ],
     );
   }

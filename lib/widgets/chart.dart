@@ -23,11 +23,18 @@ class Chart extends StatelessWidget {
           totalSum += recentTransactions[i].amount!;
         }
       }
+      var today = false;
+      var day = DateFormat.E().format(weekDay).substring(0, 2);
+      if (day == DateFormat.E().format(DateTime.now()).substring(0, 2)) {
+        today = true;
+      }
+
       return {
-        'day': DateFormat.E().format(weekDay).substring(0, 1),
+        'day': day,
         'amount': totalSum,
+        'today': today,
       };
-    });
+    }).reversed.toList();
   }
 
   double get totalSpending {
@@ -56,6 +63,7 @@ class Chart extends StatelessWidget {
                 totalSpending == 0.0
                     ? 0.0
                     : (data['amount'] as double) / totalSpending,
+                    (data['today'] as bool)
               ),
             );
           }).toList(),
