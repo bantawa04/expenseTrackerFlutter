@@ -60,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // ),
   ];
 
+//getter
   List<Transaction> get _recentTransactions {
     return _userTransaction.where((tx) {
       return tx.date!.isAfter(
