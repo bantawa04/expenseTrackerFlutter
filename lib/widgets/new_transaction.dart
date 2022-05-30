@@ -52,13 +52,35 @@ class _NewTransactionState extends State<NewTransaction> {
                   TextInputType.number, //use numberWithOptions(true) for IOS
               onSubmitted: (_) => {submit()},
             ),
-            TextButton(
+            Container(
+              height: 70,
+              child: Row(
+                children: <Widget>[
+                  Text('No date selected'),
+                  TextButton(
+                    onPressed: null,
+                    child: Text(
+                      'Select date',
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            ElevatedButton(
               onPressed: submit,
               child: Text(
                 'Add Transaction',
                 style: TextStyle(
-                  color: Colors.purple,
+                  color: Colors.white,
                 ),
+              ),
+              style: TextButton.styleFrom(
+                primary: Theme.of(context).textTheme.button!.color,
+                backgroundColor: Theme.of(context).primaryColor,
               ),
             )
           ],

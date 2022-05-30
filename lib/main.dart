@@ -24,6 +24,10 @@ class MyApp extends StatelessWidget {
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
+              //theme for button text color
+              button: TextStyle(
+                color: Colors.white,
+              )
             ),
         appBarTheme: AppBarTheme(
           //theme for app bar
