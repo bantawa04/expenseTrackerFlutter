@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function addTransaction;
@@ -10,13 +11,13 @@ class NewTransaction extends StatefulWidget {
 }
 
 class _NewTransactionState extends State<NewTransaction> {
-  final titleController = new TextEditingController();
+  final _titleController = new TextEditingController();
+  final _amountController = new TextEditingController();
+  DateTime? _selectedDate;
 
-  final amountController = new TextEditingController();
-
-  void submit() {
-    final title = titleController.text;
-    final amount = double.parse(amountController.text); //typecasting
+  void _submit() {
+    final title = _titleController.text;
+    final amount = double.parse(_amountController.text); //typecasting
 
     if (title.isEmpty || amount <= 0) {
       return;
@@ -24,6 +25,22 @@ class _NewTransactionState extends State<NewTransaction> {
     widget.addTransaction(title, amount);
     //close outmost layer
     Navigator.of(context).pop();
+  }
+
+  void _presentDatePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2022),
+      lastDate: DateTime.now(),
+    ).then((pickedDate) {
+      if (pickedDate == null) {
+        return;
+      }
+      setState(() {
+        _selectedDate = pickedDate;
+      });
+    });
   }
 
   @override
@@ -36,29 +53,35 @@ class _NewTransactionState extends State<NewTransaction> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             TextField(
-              controller: titleController,
+              controller: _titleController,
               decoration: InputDecoration(
                 labelText: 'Title',
               ),
               onSubmitted: (_) =>
-                  {submit()}, // _ means I get value but don't plan to use it
+                  {_submit()}, // _ means I get value but don't plan to use it
             ),
             TextField(
-              controller: amountController,
+              controller: _amountController,
               decoration: InputDecoration(
                 labelText: 'Amount',
               ),
               keyboardType:
                   TextInputType.number, //use numberWithOptions(true) for IOS
-              onSubmitted: (_) => {submit()},
+              onSubmitted: (_) => {_submit()},
             ),
             Container(
               height: 70,
               child: Row(
                 children: <Widget>[
-                  Text('No date selected'),
+                  Expanded(
+                    child: Text(
+                      _selectedDate == null
+                          ? 'No date selected'
+                          : 'Picked Date:${DateFormat.yMd().format(_selectedDate as DateTime)}',
+                    ),
+                  ),
                   TextButton(
-                    onPressed: null,
+                    onPressed: _presentDatePicker,
                     child: Text(
                       'Select date',
                       style: TextStyle(
@@ -71,7 +94,7 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
             ),
             ElevatedButton(
-              onPressed: submit,
+              onPressed: _submit,
               child: Text(
                 'Add Transaction',
                 style: TextStyle(
