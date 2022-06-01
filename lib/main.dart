@@ -50,18 +50,48 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransaction = [
-    // Transaction(
-    //   id: "1",
-    //   title: 'New Shose',
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: "2",
-    //   title: 'Weekly Groceries',
-    //   amount: 16.53,
-    //   date: DateTime.now(),
-    // ),
+    Transaction(
+      id: "1",
+      title: 'New Shose',
+      amount: 69.99,
+      date: DateTime.now().subtract(Duration(days: 7)),
+    ),
+    Transaction(
+      id: "2",
+      title: 'Weekly Groceries',
+      amount: 16.53,
+      date: DateTime.now().subtract(Duration(days: 6)),
+    ),
+    Transaction(
+      id: "2",
+      title: 'New Jacket',
+      amount: 20.99,
+      date: DateTime.now().subtract(Duration(days: 5)),
+    ),
+    Transaction(
+      id: "2",
+      title: 'Mobile Phone',
+      amount: 600,
+      date: DateTime.now().subtract(Duration(days: 4)),
+    ),
+    Transaction(
+      id: "2",
+      title: 'Restaurant Bill',
+      amount: 40.99,
+      date: DateTime.now().subtract(Duration(days: 3)),
+    ),
+    Transaction(
+      id: "2",
+      title: 'Gas',
+      amount: 10.20,
+      date: DateTime.now().subtract(Duration(days: 2)),
+    ),
+    Transaction(
+      id: "2",
+      title: 'Internet Bill',
+      amount: 20.20,
+      date: DateTime.now().subtract(Duration(days: 1)),
+    ),
   ];
 
 //getter
@@ -108,24 +138,40 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Personal Expense'),
-        actions: <Widget>[
-          IconButton(
-            onPressed: () => _startAddNewTransaction(context),
-            icon: Icon(
-              Icons.add,
-            ),
+    final appBar = AppBar(
+      title: Text('Personal Expense'),
+      actions: <Widget>[
+        IconButton(
+          onPressed: () => _startAddNewTransaction(context),
+          icon: Icon(
+            Icons.add,
           ),
-        ],
-      ),
+        ),
+      ],
+    );
+
+    return Scaffold(
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Chart(_recentTransactions),
-            TransactionList(_userTransaction, _deleteTransation)
+            Container(
+              //remove appbar and status bar height
+              height: (MediaQuery.of(context).size.height -
+                      appBar.preferredSize.height -
+                      MediaQuery.of(context).padding.top) *
+                  0.4,
+              child: Chart(_recentTransactions),
+            ),
+            Container(
+              //remove appbar and status bar height
+              height: (MediaQuery.of(context).size.height -
+                      appBar.preferredSize.height -
+                      MediaQuery.of(context).padding.top) *
+                  0.6,
+              child: TransactionList(_userTransaction, _deleteTransation),
+            )
           ],
         ),
       ),
