@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import './widgets/chart.dart';
 import './widgets/transaction_list.dart';
 import './models/transaction.dart';
 import './widgets/new_transaction.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown
+  ]);
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -50,48 +58,48 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransaction = [
-    Transaction(
-      id: "1",
-      title: 'New Shose',
-      amount: 69.99,
-      date: DateTime.now().subtract(Duration(days: 7)),
-    ),
-    Transaction(
-      id: "2",
-      title: 'Weekly Groceries',
-      amount: 16.53,
-      date: DateTime.now().subtract(Duration(days: 6)),
-    ),
-    Transaction(
-      id: "2",
-      title: 'New Jacket',
-      amount: 20.99,
-      date: DateTime.now().subtract(Duration(days: 5)),
-    ),
-    Transaction(
-      id: "2",
-      title: 'Mobile Phone',
-      amount: 600,
-      date: DateTime.now().subtract(Duration(days: 4)),
-    ),
-    Transaction(
-      id: "2",
-      title: 'Restaurant Bill',
-      amount: 40.99,
-      date: DateTime.now().subtract(Duration(days: 3)),
-    ),
-    Transaction(
-      id: "2",
-      title: 'Gas',
-      amount: 10.20,
-      date: DateTime.now().subtract(Duration(days: 2)),
-    ),
-    Transaction(
-      id: "2",
-      title: 'Internet Bill',
-      amount: 20.20,
-      date: DateTime.now().subtract(Duration(days: 1)),
-    ),
+    // Transaction(
+    //   id: "1",
+    //   title: 'New Shose',
+    //   amount: 69.99,
+    //   date: DateTime.now().subtract(Duration(days: 7)),
+    // ),
+    // Transaction(
+    //   id: "2",
+    //   title: 'Weekly Groceries',
+    //   amount: 16.53,
+    //   date: DateTime.now().subtract(Duration(days: 6)),
+    // ),
+    // Transaction(
+    //   id: "2",
+    //   title: 'New Jacket',
+    //   amount: 20.99,
+    //   date: DateTime.now().subtract(Duration(days: 5)),
+    // ),
+    // Transaction(
+    //   id: "2",
+    //   title: 'Mobile Phone',
+    //   amount: 600,
+    //   date: DateTime.now().subtract(Duration(days: 4)),
+    // ),
+    // Transaction(
+    //   id: "2",
+    //   title: 'Restaurant Bill',
+    //   amount: 40.99,
+    //   date: DateTime.now().subtract(Duration(days: 3)),
+    // ),
+    // Transaction(
+    //   id: "2",
+    //   title: 'Gas',
+    //   amount: 10.20,
+    //   date: DateTime.now().subtract(Duration(days: 2)),
+    // ),
+    // Transaction(
+    //   id: "2",
+    //   title: 'Internet Bill',
+    //   amount: 20.20,
+    //   date: DateTime.now().subtract(Duration(days: 1)),
+    // ),
   ];
 
 //getter
