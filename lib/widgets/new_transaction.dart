@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:my_app/widgets/adaptive_button.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function addTransaction;
@@ -89,37 +90,23 @@ class _NewTransactionState extends State<NewTransaction> {
                             : 'Picked Date:${DateFormat.yMd().format(_selectedDate as DateTime)}',
                       ),
                     ),
-                    TextButton(
-                      onPressed: _presentDatePicker,
-                      child: Text(
-                        'Select date',
-                        style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    )
+                    AdaptiveButton('Choose Date', _presentDatePicker),
                   ],
                 ),
               ),
-              Platform.isIOS
-                  ? CupertinoButton(
-                      onPressed: _submit,
-                      child: Text('Add Transaction'),
-                    )
-                  : ElevatedButton(
-                      onPressed: _submit,
-                      child: Text(
-                        'Add Transaction',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      style: TextButton.styleFrom(
-                        primary: Theme.of(context).textTheme.button!.color,
-                        backgroundColor: Theme.of(context).primaryColor,
-                      ),
-                    )
+              ElevatedButton(
+                onPressed: _submit,
+                child: Text(
+                  'Add Transaction',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                style: TextButton.styleFrom(
+                  primary: Theme.of(context).textTheme.button!.color,
+                  backgroundColor: Theme.of(context).primaryColor,
+                ),
+              )
             ],
           ),
         ),
