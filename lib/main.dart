@@ -153,23 +153,23 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final dynamic appBar = Platform.isIOS
         ? CupertinoNavigationBar(
-            middle: Text('Personal Expense'),
+            middle: const Text('Personal Expense'),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 CupertinoButton(
-                  child: Icon(CupertinoIcons.add),
+                  child: const Icon(CupertinoIcons.add),
                   onPressed: () => _startAddNewTransaction(context),
                 )
               ],
             ),
           )
         : AppBar(
-            title: Text('Personal Expense'),
+            title: const Text('Personal Expense'),
             actions: <Widget>[
               IconButton(
                 onPressed: () => _startAddNewTransaction(context),
-                icon: Icon(
+                icon: const Icon(
                   Icons.add,
                 ),
               ),
@@ -237,14 +237,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
-    return Scaffold(
-      appBar: appBar,
-      body: Platform.isIOS
+    return Platform.isIOS 
           ? CupertinoPageScaffold(
               child: pageBody,
               navigationBar: appBar,
             )
-          : pageBody,
+          :  Scaffold(
+            appBar: appBar, 
+             body :pageBody,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Platform.isIOS
           ? Container()

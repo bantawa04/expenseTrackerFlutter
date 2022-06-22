@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:my_app/widgets/adaptive_button.dart';
@@ -64,7 +62,7 @@ class _NewTransactionState extends State<NewTransaction> {
             children: <Widget>[
               TextField(
                 controller: _titleController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Title',
                 ),
                 onSubmitted: (_) =>
@@ -72,7 +70,7 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
               TextField(
                 controller: _amountController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Amount',
                 ),
                 keyboardType:
@@ -96,13 +94,13 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
               ElevatedButton(
                 onPressed: _submit,
-                child: Text(
+                child: const Text(
                   'Add Transaction',
                   style: TextStyle(
                     color: Colors.white,
                   ),
                 ),
-                style: TextButton.styleFrom(
+                style:  TextButton.styleFrom(
                   primary: Theme.of(context).textTheme.button!.color,
                   backgroundColor: Theme.of(context).primaryColor,
                 ),
