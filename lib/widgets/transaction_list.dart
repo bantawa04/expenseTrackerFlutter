@@ -18,7 +18,7 @@ class TransactionList extends StatelessWidget {
                   'No transactions added yet.',
                   style: Theme.of(context).textTheme.headline6,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -35,7 +35,7 @@ class TransactionList extends StatelessWidget {
             itemBuilder: (ctx, index) {
               return Card(
                 elevation: 5,
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                     vertical:
                         8), //add margin to defined axis vertical or horizontal
                 child: ListTile(
