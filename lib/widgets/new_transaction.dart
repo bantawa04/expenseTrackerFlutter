@@ -5,7 +5,7 @@ import 'package:my_app/widgets/adaptive_button.dart';
 class NewTransaction extends StatefulWidget {
   final Function addTransaction;
 
-  NewTransaction(this.addTransaction){
+  NewTransaction(this.addTransaction) {
     print("New transaction constructor");
   }
 
@@ -13,15 +13,13 @@ class NewTransaction extends StatefulWidget {
   _NewTransactionState createState() {
     print("Create state");
     return _NewTransactionState();
-  } 
+  }
 }
 
 class _NewTransactionState extends State<NewTransaction> {
-  
- _NewTransactionState(){
-  print("Constructor of state");
- }
-
+  _NewTransactionState() {
+    print("Constructor of state");
+  }
   @override
   void initState() {
     print("Initialize state");
@@ -39,6 +37,7 @@ class _NewTransactionState extends State<NewTransaction> {
     print("widget disposed");
     super.dispose();
   }
+
   final _titleController = new TextEditingController();
   final _amountController = new TextEditingController();
   DateTime? _selectedDate;
@@ -126,7 +125,7 @@ class _NewTransactionState extends State<NewTransaction> {
                     color: Colors.white,
                   ),
                 ),
-                style:  TextButton.styleFrom(
+                style: TextButton.styleFrom(
                   primary: Theme.of(context).textTheme.button!.color,
                   backgroundColor: Theme.of(context).primaryColor,
                 ),
