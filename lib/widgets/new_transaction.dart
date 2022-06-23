@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:my_app/widgets/adaptive_button.dart';
@@ -6,13 +5,40 @@ import 'package:my_app/widgets/adaptive_button.dart';
 class NewTransaction extends StatefulWidget {
   final Function addTransaction;
 
-  NewTransaction(this.addTransaction);
+  NewTransaction(this.addTransaction){
+    print("New transaction constructor");
+  }
 
   @override
-  _NewTransactionState createState() => _NewTransactionState();
+  _NewTransactionState createState() {
+    print("Create state");
+    return _NewTransactionState();
+  } 
 }
 
 class _NewTransactionState extends State<NewTransaction> {
+  
+ _NewTransactionState(){
+  print("Constructor of state");
+ }
+
+  @override
+  void initState() {
+    print("Initialize state");
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant NewTransaction oldWidget) {
+    print("Widget updated");
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void dispose() {
+    print("widget disposed");
+    super.dispose();
+  }
   final _titleController = new TextEditingController();
   final _amountController = new TextEditingController();
   DateTime? _selectedDate;
